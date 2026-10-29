@@ -1,136 +1,140 @@
-<div align="center">
+<p align="center">
+  <img src="./docs/assets/banner.webp" alt="AafiyaCare — عافية كير" width="100%" />
+</p>
 
-<img src="./public/logo.svg" alt="AafiyaCare" width="180" />
+<p align="center">
+  <a href="./docs/PRD.md"><img src="https://img.shields.io/badge/PRD-Read%20the%20spec-7C3AED?style=for-the-badge&logo=readthedocs&logoColor=white" alt="PRD" /></a>
+  <a href="#التشغيل-المحلي"><img src="https://img.shields.io/badge/Quick%20Start-Run%20locally-10B981?style=for-the-badge" alt="Quick Start" /></a>
+  <a href="#المعمارية-التقنية"><img src="https://img.shields.io/badge/Architecture-Overview-2563EB?style=for-the-badge&logo=diagramsdotnet&logoColor=white" alt="Architecture" /></a>
+</p>
 
-# AafiyaCare · عافية كير
-
-**Early clinical-risk intelligence for patients after hospital discharge**
-
-<p dir="rtl">منصة ذكاء مبكر لرصد المخاطر الصحية والدوائية بعد خروج المريض من المستشفى</p>
-
-*Detect Risk. Intervene Early. Improve Outcomes.*
-
-[![Status](https://img.shields.io/badge/status-MVP%20prototype-F59E0B?style=flat-square)](#الحالة-الحالية-والقيود)
-[![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Express](https://img.shields.io/badge/Express-4-000000?style=flat-square&logo=express&logoColor=white)](https://expressjs.com/)
-[![Tailwind](https://img.shields.io/badge/Tailwind-v4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![Gemini](https://img.shields.io/badge/AI-Google%20Gemini-4285F4?style=flat-square&logo=googlegemini&logoColor=white)](https://ai.google.dev/)
-[![Vision 2030](https://img.shields.io/badge/aligned%20with-Vision%202030-006C35?style=flat-square)](https://www.vision2030.gov.sa/)
-
-[وثيقة المتطلبات (PRD)](./docs/PRD.md) · [PRD بصيغة PDF](./docs/AafiyaCare_PRD.pdf) · [التشغيل المحلي](#التشغيل-المحلي)
-
-</div>
-
----
+<p align="center">
+  <img src="https://img.shields.io/badge/status-MVP%20prototype-F59E0B?style=flat-square" alt="Status" />
+  <img src="https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=black" alt="React 19" />
+  <img src="https://img.shields.io/badge/TypeScript-5.8-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Express-4-000000?style=flat-square&logo=express&logoColor=white" alt="Express" />
+  <img src="https://img.shields.io/badge/Tailwind-v4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/Gemini-Vision-4285F4?style=flat-square&logo=googlegemini&logoColor=white" alt="Gemini Vision" />
+</p>
 
 <div dir="rtl">
 
-## نبذة
+## الفكرة في سطرين
 
-تبدأ رحلة العلاج الفعلية لمرضى الأمراض المزمنة وكبار السن في بيوتهم، بعيدًا عن الطبيب والصيدلي. في هذه الفترة تضيع الإشارات المبكرة: انقطاع عن الدواء، تعارضات بين الوصفات، تأخر في إعادة الصرف، ثم زيارة طوارئ أو تنويم كان يمكن تفاديه.
+بعد خروج مريض الأمراض المزمنة من المستشفى، تختفي عن الفريق الطبي كل الإشارات المبكرة: انقطاع عن الدواء، تعارض بين الوصفات، تأخر في الصرف. وغالبًا لا يظهر الخلل إلا في الطوارئ.
 
-**عافية كير** منصة B2B موجّهة للتجمعات الصحية، ترصد هذه الإشارات وتحسب درجة خطر لكل مريض، وتعرض على الصيدلي السريري قائمة أولويات مع توصية تدخل مكتوبة بصيغة SBAR.
+**عافية كير** تسد هذه الفجوة: ترصد الإشارات، تحسب درجة خطر لكل مريض، وتضع أمام الصيدلي السريري قائمة أولويات مع خطة تدخل جاهزة بصيغة SBAR.
 
-> **مبدأ أساسي — الإنسان في الحلقة (Human-in-the-Loop):**
-> المنصة لا تتخذ قرارًا علاجيًا ولا تعدّل وصفة. دورها الفرز والتنبيه فقط، والقرار السريري للصيدلي أو الطبيب.
+> [!IMPORTANT]
+> **الإنسان في الحلقة:** المنصة لا تتخذ قرارًا علاجيًا ولا تعدّل أي وصفة. دورها الفرز والتنبيه، والقرار للصيدلي أو الطبيب.
 
-## المشكلة التي نعالجها
+## ماذا نرصد؟
 
-| المحور | ما نرصده |
+| | المحور | الإشارات |
+| :---: | :--- | :--- |
+| 🛡️ | **سلامة الدواء** | التعارضات الدوائية، الازدواجية العلاجية، أدوية قائمة Beers لكبار السن |
+| ⏱️ | **الالتزام** | تراجع نسبة أخذ الجرعات في مواعيدها |
+| 🔗 | **الاستمرارية** | فجوة ما بعد الخروج، ونفاد الدواء قبل موعد إعادة الصرف |
+| ♻️ | **الهدر** | الأدوية الفائضة أو غير المستخدمة |
+
+## كيف تعمل المنصة
+
+</div>
+
+<p align="center">
+  <img src="./docs/assets/workflow.webp" alt="رصد ← تنبؤ ← تدخل ← قياس" width="100%" />
+</p>
+
+<div dir="rtl">
+
+حلقة مغلقة: كل تدخل يُوثَّق بنتيجته، وهذه النتائج ترجع لتحسين دقة التنبيهات القادمة.
+
+## مستويات الخطر
+
+</div>
+
+<p align="center">
+  <img src="./docs/assets/risk-tiers.webp" alt="مستويات الخطر الأربعة وزمن الاستجابة" width="100%" />
+</p>
+
+<div dir="rtl">
+
+## المزايا في النسخة الحالية
+
+| الميزة | ماذا تقدم |
 | :--- | :--- |
-| **سلامة الدواء** | التعارضات الدوائية، الازدواجية العلاجية، أدوية قائمة Beers لكبار السن |
-| **الالتزام** | تراجع نسبة أخذ الجرعات في مواعيدها |
-| **الاستمرارية** | الفجوة بعد الخروج من المستشفى ونفاد الدواء قبل إعادة الصرف |
-| **الهدر** | الأدوية الفائضة أو غير المستخدمة |
-
-## المزايا الموجودة في النسخة الحالية
-
-| الشاشة | الوصف | الملف |
-| :--- | :--- | :--- |
-| **لوحة التجمع الصحي** | فرز المرضى حسب درجة الخطر، رسوم بيانية، تنبيهات ذكية | `DashboardView.tsx` |
-| **جواز الدواء** | ملف دوائي موحّد لكل مريض، مع **مسح علبة الدواء بالكاميرا** عبر Gemini Vision، وتصدير الجواز كملف HTML | `MedicationPassportView.tsx` |
-| **محرك المخاطر** | محاكاة لحساب درجة الخطر وتصنيفها | `RiskEngineView.tsx` · `riskAlertEngine.ts` |
-| **بوابة المريض** | واجهة مبسطة لكبار السن لتسجيل الجرعة بنقرة | `PatientPortalView.tsx` |
-| **التدخلات السريرية** | توصيات بصيغة SBAR مع قبول أو رفض من الصيدلي، وسجل تدقيق | `InterventionsModal.tsx` |
-| **مؤشرات الأداء** | مؤشرات الالتزام والتكلفة المتجنبة على مستوى المنشأة | `EnterpriseMetricsView.tsx` |
-| **عربي / إنجليزي** | الواجهة كاملة باللغتين مع دعم RTL | `App.tsx` |
-
-## آلية العمل
-
-</div>
-
-```mermaid
-flowchart LR
-    A["Detect<br/>رصد الإشارات"] --> B["Predict<br/>حساب درجة الخطر"]
-    B --> C["Intervene<br/>تنبيه الصيدلي + SBAR"]
-    C --> D["Measure<br/>توثيق النتيجة"]
-    D -.-> A
-```
-
-<div dir="rtl">
-
-### مستويات الخطر
-
-| المستوى | زمن الاستجابة المستهدف | الإجراء |
-| :--- | :--- | :--- |
-| 🔴 **عالي** | 12–24 ساعة | تواصل هاتفي أو مراجعة عاجلة |
-| 🟠 **متصاعد** | 48–72 ساعة | مراجعة الملف وجدولة استشارة |
-| 🟡 **مراقبة** | أسبوعيًا | تنبيهات آلية للمريض واستبيان قصير |
-| 🟢 **منخفض** | شهريًا | تذكير روتيني ومحتوى توعوي |
+| 📊 **لوحة التجمع الصحي** | فرز المرضى حسب درجة الخطر، رسوم بيانية، وتنبيهات ذكية |
+| 💊 **جواز الدواء الرقمي** | ملف دوائي موحّد لكل مريض، و**مسح علبة الدواء بالكاميرا** عبر Gemini Vision، وتصدير الجواز كملف |
+| 🧠 **محرك المخاطر** | محاكاة حساب درجة الخطر وتصنيف المريض |
+| 👴 **بوابة المريض** | واجهة مبسطة لكبار السن لتسجيل الجرعة بنقرة واحدة |
+| 🩺 **التدخلات السريرية** | توصيات SBAR يقبلها الصيدلي أو يرفضها، مع سجل تدقيق كامل |
+| 📈 **مؤشرات المنشأة** | الالتزام والتكلفة المتجنبة على مستوى التجمع |
+| 🌐 **ثنائية اللغة** | الواجهة كاملة بالعربية والإنجليزية مع دعم RTL |
 
 ## المؤشرات المستهدفة
 
 **مؤشر النجم الشمالي:** عدد الحالات عالية الخطورة التي رُصدت وعولجت قبل حدوث انتكاسة.
 
 | المؤشر | المستهدف |
-| :--- | :--- |
-| دقة التنبيهات (Signal Precision) | أكثر من 85% |
-| قبول الكادر للتوصيات | أكثر من 80% |
-| خفض إعادة التنويم وزيارات الطوارئ | 20%–30% |
-| خفض الهدر الدوائي | 25% |
-| زمن الرصد / زمن التدخل | أقل من 24 ساعة / 48 ساعة |
+| :--- | :---: |
+| دقة التنبيهات | **أكثر من 85%** |
+| قبول الكادر الطبي للتوصيات | **أكثر من 80%** |
+| خفض إعادة التنويم وزيارات الطوارئ | **20% – 30%** |
+| خفض الهدر الدوائي | **25%** |
+| زمن الرصد | **أقل من 24 ساعة** |
+| زمن التدخل | **أقل من 48 ساعة** |
 
-> هذه **مستهدفات** للتجربة الميدانية، وليست نتائج مقاسة.
+> [!NOTE]
+> هذه أرقام **مستهدفة** للتجربة الميدانية، وليست نتائج مقاسة.
 
-## المعمارية
+## المعمارية التقنية
 
 </div>
 
 ```mermaid
-flowchart TB
-    subgraph Client["Frontend — React 19 + Vite + Tailwind v4"]
-        UI["Dashboard · Passport · Risk Engine · Patient Portal"]
+flowchart LR
+    subgraph FE["Frontend · React 19 + Vite + Tailwind v4"]
+        UI["Dashboard · Passport<br/>Risk Engine · Patient Portal"]
     end
-    subgraph Server["Backend — Express (server.ts)"]
-        API["REST API /api/*"]
+    subgraph BE["Backend · Express"]
+        API["REST API"]
         RISK["Risk alert engine"]
-        STORE[("In-memory store<br/>mock data")]
+        DB[("In-memory<br/>demo data")]
     end
-    GEM["Google Gemini<br/>Vision"]
+    AI["Google Gemini<br/>Vision"]
     UI <--> API
     API --> RISK
-    API <--> STORE
-    API -- "medication photo" --> GEM
+    API <--> DB
+    API -- "medication photo" --> AI
 ```
 
 <div dir="rtl">
 
-### واجهات الـ API
+<details>
+<summary><b>واجهات الـ API</b></summary>
+<br/>
 
 | Method | Endpoint | الوظيفة |
 | :--- | :--- | :--- |
-| `GET` | `/api/health` | حالة الخادم وهل مفتاح Gemini مهيأ |
+| `GET` | `/api/health` | حالة الخادم وجاهزية Gemini |
 | `GET` | `/api/kpis` | مؤشرات الأداء |
-| `GET` | `/api/patients` · `/api/patients/:id` | قائمة المرضى وتفاصيل مريض |
-| `POST` / `DELETE` | `/api/patients/:id/medications` | إضافة دواء أو حذفه من الجواز |
-| `POST` | `/api/patients/:id/doses` · `.../doses/:doseId/log` | جدولة جرعة وتسجيلها |
+| `GET` | `/api/patients` | قائمة المرضى |
+| `GET` | `/api/patients/:id` | تفاصيل مريض |
+| `POST` | `/api/patients/:id/medications` | إضافة دواء للجواز |
+| `DELETE` | `/api/patients/:id/medications/:medId` | حذف دواء |
+| `POST` | `/api/patients/:id/doses` | جدولة جرعة |
+| `POST` | `/api/patients/:id/doses/:doseId/log` | تسجيل أخذ الجرعة |
 | `POST` | `/api/patients/:id/alerts/:alertId/ack` | تأكيد استلام تنبيه |
 | `POST` | `/api/medications/scan` | التعرف على علبة دواء من صورة |
-| `GET` / `PATCH` | `/api/interventions` | عرض التدخلات وتحديث حالتها |
+| `GET` | `/api/interventions` | قائمة التدخلات |
+| `PATCH` | `/api/interventions/:id` | تحديث حالة تدخل |
 | `GET` | `/api/audit-logs` | سجل التدقيق |
 
-## هيكل المشروع
+</details>
+
+<details>
+<summary><b>هيكل المشروع</b></summary>
+<br/>
 
 </div>
 
@@ -138,30 +142,30 @@ flowchart TB
 Afiya-care-platform/
 ├── docs/
 │   ├── PRD.md                    # Product Requirements Document
-│   └── AafiyaCare_PRD.pdf
-├── public/
-│   ├── logo.svg
-│   └── favicon.svg
+│   ├── AafiyaCare_PRD.pdf
+│   └── assets/                   # README visuals
+├── public/                       # logo.svg, favicon.svg
 ├── src/
 │   ├── components/               # Dashboard, Passport, Risk Engine, Patient Portal, modals
 │   ├── data/mockData.ts          # Demo patients, medications, alerts
 │   ├── services/
 │   │   ├── api.ts                # Frontend API client
-│   │   └── riskAlertEngine.ts    # Risk alert generation logic
-│   ├── utils/exportPassport.ts   # Health passport HTML export
+│   │   └── riskAlertEngine.ts    # Risk alert generation
+│   ├── utils/exportPassport.ts   # Health passport export
 │   ├── types.ts
 │   ├── App.tsx
 │   └── main.tsx
-├── server.ts                     # Express API + Gemini Vision integration
-├── vite.config.ts
+├── server.ts                     # Express API + Gemini Vision
 └── package.json
 ```
 
 <div dir="rtl">
 
+</details>
+
 ## التشغيل المحلي
 
-**المتطلبات:** Node.js 20 أو أحدث. مفتاح Gemini اختياري: بدونه تعمل المنصة كاملة بعينات المسح التجريبية، ومعه يعمل المسح الحي للصور.
+**المتطلبات:** Node.js 20 أو أحدث.
 
 </div>
 
@@ -169,66 +173,70 @@ Afiya-care-platform/
 git clone https://github.com/4-u1/Afiya-care-platform.git
 cd Afiya-care-platform
 npm install
-
-cp .env.example .env      # optional: add GEMINI_API_KEY
-npm run dev               # http://localhost:3000
+npm run dev        # → http://localhost:3000
 ```
 
 <div dir="rtl">
 
+> [!TIP]
+> المنصة تعمل كاملة **بدون أي مفتاح** باستخدام عينات المسح التجريبية. لتفعيل المسح الحي لصور الأدوية، انسخ `.env.example` إلى `.env` وأضف `GEMINI_API_KEY`.
+
 | الأمر | الوظيفة |
 | :--- | :--- |
-| `npm run dev` | تشغيل الخادم والواجهة في وضع التطوير |
-| `npm run build` | بناء نسخة الإنتاج في `dist/` |
+| `npm run dev` | تشغيل الخادم والواجهة للتطوير |
+| `npm run build` | بناء نسخة الإنتاج |
 | `npm start` | تشغيل نسخة الإنتاج |
 | `npm run lint` | فحص الأنواع عبر TypeScript |
 
-## الحالة الحالية والقيود
+## الحالة الحالية
 
-هذه **نسخة أولية (MVP)** لغرض العرض والتحكيم:
+هذه **نسخة أولية (MVP)** للعرض والتحكيم:
 
-- البيانات **تجريبية** ومحفوظة في الذاكرة، وتُعاد عند إعادة تشغيل الخادم.
+- البيانات تجريبية ومحفوظة في الذاكرة، وتعود لحالتها الأولى عند إعادة التشغيل.
 - لا يوجد تكامل فعلي بعد مع صحتي أو وصفتي أو أنظمة المستشفيات.
-- منطق المخاطر قائم على قواعد (rule-based)، وليس نموذج تعلم آلة مدرّبًا.
+- محرك المخاطر قائم على قواعد سريرية (rule-based)، وليس نموذج تعلم آلة مدرّبًا.
 - لا يوجد تسجيل دخول أو صلاحيات بعد.
 
-> ⚠️ **تنبيه:** المنصة غير معتمدة للاستخدام السريري، ولا يُعتمد عليها في أي قرار علاجي.
+> [!WARNING]
+> المنصة غير معتمدة للاستخدام السريري، ولا يُعتمد عليها في أي قرار علاجي.
 
 ## خارطة الطريق
 
-- [ ] قاعدة بيانات دائمة (PostgreSQL) بدل التخزين في الذاكرة
-- [ ] تسجيل دخول وصلاحيات حسب الدور (RBAC)
+- [x] لوحة التجمع الصحي وفرز المرضى
+- [x] جواز الدواء مع المسح بالكاميرا
+- [x] توصيات التدخل بصيغة SBAR وسجل التدقيق
+- [ ] قاعدة بيانات دائمة (PostgreSQL)
+- [ ] تسجيل دخول وصلاحيات حسب الدور
 - [ ] تكامل عبر HL7 FHIR R4 مع أنظمة السجلات الصحية
-- [ ] الربط مع منصتي صحتي ووصفتي
-- [ ] نموذج تنبؤي مدرّب على بيانات حقيقية بعد الحصول على الموافقات
-- [ ] استضافة محلية داخل المملكة ومواءمة مع نظام حماية البيانات الشخصية (PDPL) وضوابط NCA
+- [ ] الربط مع صحتي ووصفتي
+- [ ] نموذج تنبؤي مدرّب بعد الحصول على الموافقات
+- [ ] استضافة داخل المملكة ومواءمة مع نظام حماية البيانات الشخصية وضوابط الأمن السيبراني
 - [ ] تجربة ميدانية مع تجمع صحي
 
 ## الجهات المستهدفة
 
-| الجهة | دورها في المنصة |
+| الجهة | الدور |
 | :--- | :--- |
-| **التجمعات الصحية** | العميل الأساسي: فرق الصيدلة السريرية والرعاية المنزلية |
-| **منصة صحتي** | مصدر المؤشرات الحيوية والمواعيد (تكامل مخطط) |
-| **منظومة وصفتي** | مصدر بيانات الصرف وإعادة الصرف (تكامل مخطط) |
-| **هيئة الغذاء والدواء (SFDA)** | مرجع الأدوية المسجلة في المملكة |
+| **التجمعات الصحية** | العميل الأساسي: الصيدلة السريرية والرعاية المنزلية |
+| **منصة صحتي** | المؤشرات الحيوية والمواعيد (تكامل مخطط) |
+| **منظومة وصفتي** | بيانات الصرف وإعادة الصرف (تكامل مخطط) |
+| **هيئة الغذاء والدواء** | مرجع الأدوية المسجلة في المملكة |
 
 ## الفريق
 
-| العضو | التخصص | الدور |
-| :--- | :--- | :--- |
-| **عبدالعزيز لاحق المطيري** | تقنية معلومات | قائد المشروع — المنتج والشراكات |
-| **يزيد حمد الحارثي** | هندسة حاسب | البنية الخلفية والأمن — الـ APIs وحماية البيانات |
-| **مشاري خالد العصيمي** | علوم حاسب | الذكاء الاصطناعي — محرك المخاطر ومنطق التصنيف |
-| **أصيل سمير الحارثي** | هندسة حاسب | الواجهات والرؤية الحاسوبية — تطبيق المريض وجواز الدواء |
-| **فهد تركي الخماش** | تقنية معلومات | السحابة وقواعد البيانات — تكامل البيانات والاعتمادية |
+| | العضو | الدور |
+| :---: | :--- | :--- |
+| 🧭 | **عبدالعزيز لاحق المطيري** | قائد المشروع · المنتج والشراكات |
+| 🔐 | **يزيد حمد الحارثي** | البنية الخلفية والأمن · الـ APIs وحماية البيانات |
+| 🧠 | **مشاري خالد العصيمي** | الذكاء الاصطناعي · محرك المخاطر |
+| 📱 | **أصيل سمير الحارثي** | الواجهات والرؤية الحاسوبية · تطبيق المريض وجواز الدواء |
+| ☁️ | **فهد تركي الخماش** | السحابة وقواعد البيانات · التكامل والاعتمادية |
 
 </div>
 
 ---
 
-<div align="center">
-
-**AafiyaCare** — Team NEX · 2026
-
-</div>
+<p align="center">
+  <img src="./public/favicon.svg" width="40" alt="" /><br/>
+  <b>AafiyaCare</b> · Team NEX · 2026
+</p>

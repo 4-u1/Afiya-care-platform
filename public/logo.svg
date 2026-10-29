@@ -143,8 +143,9 @@
       font-size="44" 
       font-weight="900" 
       fill="#0C3B7C"
-      letter-spacing="1px"
-    >عـافـيـة كـيـر</text>
+      direction="rtl"
+      unicode-bidi="embed"
+    >عافية كير</text>
 
     <!-- English Brand Line: AafiyaCare -->
     <text 
