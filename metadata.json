@@ -1,0 +1,6 @@
+{
+  "name": "AafiyaCare | عافية كير",
+  "description": "منصة الذكاء المبكر للمخاطر الصحية والدوائية - Detect Risk. Intervene Early. Improve Outcomes.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

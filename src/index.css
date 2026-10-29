@@ -1,0 +1,255 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    font-family: 'Cairo', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  [dir="ltr"] {
+    font-family: 'Plus Jakarta Sans', 'Cairo', system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* 
+ * ==============================================================================
+ * Medical Certificate Print Stylesheet (@media print)
+ * Optimized for official clinical document & patient health passport reproduction
+ * ==============================================================================
+ */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 8mm 12mm 10mm 12mm;
+  }
+
+  *, *::before, *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  html, body {
+    background: #FFFFFF !important;
+    color: #0F172A !important;
+    font-size: 10.5pt !important;
+    line-height: 1.45 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  main {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+  }
+
+  /* Hide interactive, navigational, or on-screen only elements */
+  header, 
+  nav, 
+  footer, 
+  aside, 
+  .no-print, 
+  [role="navigation"], 
+  .print\:hidden {
+    display: none !important;
+  }
+
+  /* Display control utilities in print */
+  .print\:block {
+    display: block !important;
+  }
+
+  .print\:flex {
+    display: flex !important;
+  }
+
+  .print\:grid {
+    display: grid !important;
+  }
+
+  .print\:border-none {
+    border: none !important;
+  }
+
+  .print\:shadow-none {
+    box-shadow: none !important;
+  }
+
+  .print\:break-inside-avoid {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Medical Certificate Frame & Border Layout */
+  .medical-certificate-frame {
+    border: 2px solid #0A2550 !important;
+    padding: 14px 18px !important;
+    background: #FFFFFF !important;
+    position: relative !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    margin-bottom: 12px !important;
+  }
+
+  .medical-certificate-frame::after {
+    content: '' !important;
+    position: absolute !important;
+    inset: 3px !important;
+    border: 1px solid #CBD5E1 !important;
+    pointer-events: none !important;
+  }
+
+  .medical-certificate-header {
+    border-bottom: 2px solid #0A2550 !important;
+    padding-bottom: 10px !important;
+    margin-bottom: 14px !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Medical Data Tables */
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+
+  thead {
+    display: table-header-group !important;
+  }
+
+  tr {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  th, td {
+    border: 1px solid #CBD5E1 !important;
+    padding: 6px 10px !important;
+    font-size: 9pt !important;
+    vertical-align: middle !important;
+  }
+
+  th {
+    background-color: #F1F5F9 !important;
+    color: #1E293B !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+  }
+
+  /* Official Certificate Signature & Seal Section at Bottom */
+  .print-signature-section {
+    display: grid !important;
+    grid-template-columns: 1fr 120px 1fr !important;
+    gap: 18px !important;
+    align-items: flex-end !important;
+    margin-top: 20px !important;
+    padding-top: 14px !important;
+    border-top: 2px solid #0A2550 !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .print-signature-box {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    min-height: 95px !important;
+  }
+
+  .print-signature-line {
+    border-bottom: 1.5px dashed #334155 !important;
+    height: 42px !important;
+    margin-bottom: 6px !important;
+    width: 100% !important;
+    position: relative !important;
+  }
+
+  .print-signature-line::before {
+    content: '✖' !important;
+    position: absolute !important;
+    bottom: -2px !important;
+    right: 0 !important;
+    font-size: 8pt !important;
+    color: #94A3B8 !important;
+  }
+
+  [dir="ltr"] .print-signature-line::before {
+    right: auto !important;
+    left: 0 !important;
+  }
+
+  .print-signature-title {
+    font-size: 9pt !important;
+    font-weight: 800 !important;
+    color: #0A2550 !important;
+    margin-bottom: 2px !important;
+  }
+
+  .print-signature-subtitle {
+    font-size: 8pt !important;
+    color: #475569 !important;
+    line-height: 1.35 !important;
+  }
+
+  .print-signature-date {
+    font-size: 8pt !important;
+    color: #64748B !important;
+    margin-top: 4px !important;
+    border-bottom: 1px dotted #CBD5E1 !important;
+    padding-bottom: 2px !important;
+    display: inline-block !important;
+    width: 100% !important;
+  }
+
+  /* Official Institutional Stamp Placeholder Box */
+  .print-stamp-placeholder {
+    width: 110px !important;
+    height: 110px !important;
+    border: 2px dashed #0C3B7C !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    color: #0C3B7C !important;
+    padding: 8px !important;
+    font-size: 7pt !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    opacity: 0.95 !important;
+    transform: rotate(-6deg) !important;
+    background: #F8FAFC !important;
+    margin: 0 auto !important;
+  }
+
+  .print-stamp-placeholder .stamp-inner-circle {
+    width: 88px !important;
+    height: 88px !important;
+    border: 1px solid #0C3B7C !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 4px !important;
+  }
+
+  /* Security Watermark & Verification Details */
+  .print-cert-footer-meta {
+    margin-top: 10px !important;
+    padding-top: 8px !important;
+    border-top: 1px solid #E2E8F0 !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    font-size: 7.5pt !important;
+    color: #64748B !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+}
