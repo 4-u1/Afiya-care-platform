@@ -93,10 +93,8 @@
   <img src="./docs/assets/architecture.webp" alt="Frontend → Express API → Gemini Vision" width="100%" />
 </p>
 
-<div dir="rtl">
-
-<details>
-<summary><b>واجهات الـ API</b></summary>
+<details dir="rtl">
+<summary><b>واجهات البرمجة (API)</b></summary>
 <br/>
 
 | Method | Endpoint | الوظيفة |
@@ -117,11 +115,9 @@
 
 </details>
 
-<details>
+<details dir="rtl">
 <summary><b>هيكل المشروع</b></summary>
 <br/>
-
-</div>
 
 ```text
 Afiya-care-platform/
@@ -144,9 +140,9 @@ Afiya-care-platform/
 └── package.json
 ```
 
-<div dir="rtl">
-
 </details>
+
+<div dir="rtl">
 
 ## التشغيل المحلي
 
